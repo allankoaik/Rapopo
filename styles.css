@@ -47,6 +47,59 @@ button {
   margin: 0 auto;
 }
 
+.social-rail {
+  position: fixed;
+  z-index: 10;
+  top: 56%;
+  right: 20px;
+  display: grid;
+  gap: 10px;
+  transform: translateY(-50%);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.social-rail.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(12px, -50%);
+  pointer-events: none;
+}
+
+.social-link {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: white;
+  background: #777a78;
+  box-shadow: 0 8px 20px rgba(31, 27, 26, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.social-link:hover,
+.social-link:focus-visible {
+  transform: translateX(-4px);
+  box-shadow: 0 10px 24px rgba(31, 27, 26, 0.3);
+}
+
+.social-link svg {
+  width: 21px;
+  height: 21px;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.social-link.instagram svg {
+  fill: none;
+}
+
+.social-link.instagram .social-dot {
+  fill: currentColor;
+  stroke: none;
+}
+
 .hero {
   background:
     linear-gradient(rgba(20, 16, 14, 0.35), rgba(20, 16, 14, 0.22)),
@@ -60,6 +113,28 @@ button {
   align-items: center;
   justify-content: space-between;
   padding-top: 24px;
+  transition: opacity 0.3s ease, background 0.3s ease, padding 0.3s ease;
+}
+
+.topbar.is-floating {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px max(16px, calc((100% - 1120px) / 2));
+  background: rgba(32, 29, 27, 0.94);
+  box-shadow: 0 8px 24px rgba(31, 27, 26, 0.18);
+  backdrop-filter: blur(12px);
+}
+
+.topbar.is-transitioning {
+  opacity: 0;
+}
+
+.topbar.is-hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .brand {
@@ -99,6 +174,9 @@ button {
 .nav-button,
 .primary-btn,
 .secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 999px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -113,6 +191,8 @@ button {
 .nav-button {
   padding: 0.9rem 1.4rem;
   font-weight: 600;
+  color: white;
+  text-decoration: none;
 }
 
 .primary-btn {
@@ -414,28 +494,35 @@ h2 {
 }
 
 .service-card {
-  padding: 26px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  padding: 22px 18px;
+  text-align: center;
 }
 
 .service-icon {
-  width: 54px;
-  height: 54px;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
   display: grid;
   place-items: center;
-  border-radius: 16px;
+  border-radius: 12px;
   background: rgba(185, 112, 82, 0.12);
-  font-size: 1.4rem;
-  margin-bottom: 16px;
+  font-size: 1.05rem;
+  margin-bottom: 12px;
 }
 
 .service-card h3 {
-  margin-bottom: 10px;
-  font-size: 2rem;
+  margin-bottom: 6px;
+  font-size: 1.7rem;
   color: var(--text);
 }
 
 .service-card p {
   margin: 0;
+  width: 100%;
   color: var(--muted);
 }
 
@@ -520,6 +607,30 @@ h2 {
 }
 
 @media (max-width: 560px) {
+  .social-rail {
+    top: auto;
+    bottom: 16px;
+    right: 12px;
+    display: flex;
+    gap: 8px;
+    transform: none;
+  }
+
+  .social-rail.is-hidden {
+    transform: translateY(12px);
+  }
+
+  .social-link {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  .social-link svg {
+    width: 17px;
+    height: 17px;
+  }
+
   .booking-row {
     grid-template-columns: 1fr;
   }

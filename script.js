@@ -1,39 +1,35 @@
 const rooms = [
   {
     name: "Ocean Suite",
-    price: "$420 / night",
+    price: "K420 / night",
     description:
       "A bright, airy suite with floor-to-ceiling views, a soaking tub, and a private balcony facing the bay.",
     features: ["Sea view", "King bed", "Private bath"],
-    image:
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
+    image: "./pictures/Rooms/90527144.jpg",
   },
   {
     name: "Garden Retreat",
-    price: "$310 / night",
+    price: "K310 / night",
     description:
       "Soft textures, warm wood finishes, and lush courtyard views create a quiet and restorative escape.",
     features: ["Garden view", "Breakfast included", "Rain shower"],
-    image:
-      "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80",
+    image: "./pictures/Rooms/90527104.jpg",
   },
   {
     name: "Family Loft",
-    price: "$360 / night",
+    price: "K360 / night",
     description:
       "Spacious and welcoming, with extra sleeping space, modern comforts, and a lounge area for slow evenings.",
     features: ["2 bedrooms", "Coffee bar", "City access"],
-    image:
-      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80",
+    image: "./pictures/Rooms/90527090.jpg",
   },
   {
     name: "Coastal Studio",
-    price: "$280 / night",
+    price: "K280 / night",
     description:
       "A refined hideaway with natural textures, a reading nook, and sunlit windows overlooking the coastline.",
     features: ["Ocean deck", "Queen bed", "Smart TV"],
-    image:
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
+    image: "./pictures/Rooms/90527144.jpg",
   },
 ];
 
@@ -41,32 +37,62 @@ const services = [
   {
     icon: "✈️",
     title: "Airport Transfer",
-    text: "Easy, comfortable rides to and from the airport with flexible timing for early arrivals and late departures.",
+    text: "Complimentary airport transfers make the short journey from Tokua Airport easy and comfortable.",
   },
   {
     icon: "📶",
     title: "Free Wi-Fi",
-    text: "Stay connected throughout the property with reliable high-speed internet in rooms and shared spaces.",
+    text: "Stay connected with free Wi-Fi in every room, each designed with a balcony and sea views.",
   },
   {
     icon: "🛎️",
     title: "Concierge Service",
-    text: "From reservation help to local recommendations, our team makes every detail feel effortless.",
+    text: "Our team can help arrange island outings, town trips, airport transfers, and time on the water.",
   },
   {
     icon: "🥐",
     title: "Breakfast Buffet",
-    text: "Start each morning with fresh pastries, tropical fruit, local favourites, and a calm seaside setting.",
+    text: "Start the day with complimentary breakfast, including fresh local flavours and tropical produce.",
   },
   {
     icon: "🧼",
     title: "Daily Housekeeping",
-    text: "We refresh your room every day so you can settle in and truly relax without any extra effort.",
+    text: "Settle into a comfortable, air-conditioned room with thoughtful essentials and a private balcony.",
   },
   {
     icon: "🚗",
     title: "Parking Access",
-    text: "Safe, convenient parking is available for guests arriving by car, with smooth check-in assistance.",
+    text: "Convenient parking is available on site for guests exploring Kokopo and East New Britain by car.",
+  },
+  {
+    icon: "🍳",
+    title: "Free Breakfast",
+    text: "Enjoy a complimentary breakfast with fresh fruit, pastries, and local favourites each morning.",
+  },
+  {
+    icon: "🛶",
+    title: "Canoeing",
+    text: "Explore the calm coastline at your own pace with complimentary canoes available for guests.",
+  },
+  {
+    icon: "🚕",
+    title: "Taxi Services",
+    text: "Our team can arrange reliable taxis for airport transfers, local trips, and evening plans.",
+  },
+  {
+    icon: "🏊",
+    title: "Swimming Pool",
+    text: "Cool off and unwind in our inviting pool, surrounded by a peaceful tropical setting.",
+  },
+  {
+    icon: "🤿",
+    title: "Snorkeling",
+    text: "Discover clear coastal waters and vibrant marine life with easy access to snorkeling spots.",
+  },
+  {
+    icon: "💆",
+    title: "Massage",
+    text: "Restore your balance with a relaxing massage designed to ease away travel-day tension.",
   },
 ];
 
@@ -170,4 +196,88 @@ if (servicesList) {
 
 if (year) {
   year.textContent = new Date().getFullYear();
+}
+
+const socialRail = document.querySelector(".social-rail");
+const contactSection = document.getElementById("contact");
+const bookingFields = document.querySelectorAll(".booking-panel input, .booking-panel select");
+const topbar = document.querySelector(".topbar");
+const pageSections = document.querySelectorAll("main section, .site-footer");
+let socialReturnTimer;
+let navigationReturnTimer;
+
+function hideSocialRailWhileEditing() {
+  if (!socialRail) return;
+
+  clearTimeout(socialReturnTimer);
+  socialRail.classList.add("is-hidden");
+}
+
+function showSocialRailAfterEditing() {
+  if (!socialRail) return;
+
+  clearTimeout(socialReturnTimer);
+  socialReturnTimer = setTimeout(() => {
+    socialRail.classList.remove("is-hidden");
+  }, 900);
+}
+
+bookingFields.forEach((field) => {
+  field.addEventListener("focus", hideSocialRailWhileEditing);
+  field.addEventListener("input", () => {
+    hideSocialRailWhileEditing();
+    showSocialRailAfterEditing();
+  });
+  field.addEventListener("change", showSocialRailAfterEditing);
+  field.addEventListener("blur", showSocialRailAfterEditing);
+});
+
+if (socialRail && contactSection) {
+  const contactObserver = new IntersectionObserver(
+    ([entry]) => {
+      socialRail.classList.toggle("is-hidden", entry.isIntersecting);
+    },
+    { threshold: 0.12 }
+  );
+
+  contactObserver.observe(contactSection);
+}
+
+if (topbar && pageSections.length) {
+  function updateTopbarVisibility() {
+    const footerVisible = contactSection?.getBoundingClientRect().top <= window.innerHeight;
+    const readingLine = window.innerHeight * 0.55;
+    const activeSection = [...document.querySelectorAll("main section")].some((section) => {
+      const bounds = section.getBoundingClientRect();
+      return bounds.top <= readingLine && bounds.bottom >= readingLine;
+    });
+
+    if (footerVisible) {
+      topbar.classList.add("is-hidden");
+      return;
+    }
+
+    if (activeSection) {
+      topbar.classList.add("is-floating");
+      topbar.classList.remove("is-hidden", "is-transitioning");
+    } else if (window.scrollY > 120) {
+      topbar.classList.add("is-hidden");
+    } else {
+      topbar.classList.remove("is-hidden", "is-floating");
+    }
+  }
+
+  window.addEventListener("scroll", updateTopbarVisibility, { passive: true });
+  window.addEventListener("resize", updateTopbarVisibility);
+  updateTopbarVisibility();
+
+  topbar.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      clearTimeout(navigationReturnTimer);
+      topbar.classList.add("is-transitioning");
+      navigationReturnTimer = setTimeout(() => {
+        topbar.classList.remove("is-transitioning");
+      }, 850);
+    });
+  });
 }
