@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rapopo Plantation Resort</title>
+    <meta
+      name="description"
+      content="Rapopo Plantation Resort offers peaceful stays, tropical comfort, and warm hospitality by the coast."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="topbar container">
+        <div class="brand">
+          <span class="brand-mark">H</span>
+          <span>Rapopo Plantation Resort</span>
+        </div>
+        <div class="nav-links">
+          <a href="#stay">Stay</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <button class="nav-button">Book a Room</button>
+      </nav>
+
+      <div class="hero-content container">
+        <div class="hero-copy">
+          <p class="eyebrow">Seaside comfort, elevated living</p>
+          <h1>Wake up to ocean light and effortless luxury.</h1>
+          <p class="lead">
+            Discover a relaxed coastal retreat where thoughtful design, warm hospitality,
+            and memorable moments come together.
+          </p>
+          <div class="hero-actions">
+            <button class="primary-btn">Reserve Your Stay</button>
+            <button class="secondary-btn">Explore Suites</button>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <strong>4.9/5</strong>
+              <span>Guest rating</span>
+            </div>
+            <div>
+              <strong>24/7</strong>
+              <span>Front desk</span>
+            </div>
+            <div>
+              <strong>120+</strong>
+              <span>Comfortable rooms</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-panel">
+          <p class="panel-label">Check availability</p>
+          <div class="booking-row">
+            <label>
+              <span>Arrival</span>
+              <input type="date" value="2026-10-12" />
+            </label>
+            <label>
+              <span>Departure</span>
+              <input type="date" value="2026-10-16" />
+            </label>
+          </div>
+          <div class="booking-row compact">
+            <label>
+              <span>Guests</span>
+              <select>
+                <option>2 Guests</option>
+                <option>3 Guests</option>
+                <option>4 Guests</option>
+                <option>Family Stay</option>
+              </select>
+            </label>
+            <label>
+              <span>Type</span>
+              <select>
+                <option>Suite</option>
+                <option>Deluxe</option>
+                <option>Family</option>
+              </select>
+            </label>
+          </div>
+          <button class="primary-btn block">Check Rates</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="stay" class="section accommodation">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow dark">Accommodation</p>
+            <h2>Rooms curated for slow mornings and unforgettable evenings.</h2>
+          </div>
+
+          <div class="accommodation-carousel">
+            <button class="carousel-btn prev" type="button" aria-label="Previous room">❮</button>
+            <div class="carousel-viewport">
+              <div id="accommodation-list" class="carousel-track"></div>
+            </div>
+            <button class="carousel-btn next" type="button" aria-label="Next room">❯</button>
+          </div>
+          <div id="carousel-dots" class="carousel-dots" aria-label="Choose room"></div>
+        </div>
+      </section>
+
+      <section id="services" class="section services">
+        <div class="container">
+          <div class="section-heading center">
+            <p class="eyebrow dark">Basic services</p>
+            <h2>Everything you need, thoughtfully taken care of.</h2>
+          </div>
+          <div id="services-list" class="service-grid"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <div class="brand footer-brand">
+            <span class="brand-mark">H</span>
+            <span>Rapopo Plantation Resort</span>
+          </div>
+          <p>Tropical calm, heartfelt service, and restful nights by the sea.</p>
+        </div>
+
+        <div class="footer-links">
+          <h3>Visit</h3>
+          <ul>
+            <li>15 Harbor Lane</li>
+            <li>Monterey Bay, CA</li>
+            <li>hello@harborhaven.com</li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h3>Call</h3>
+          <ul>
+            <li>+1 (415) 555-0198</li>
+            <li>Check-in: 3:00 PM</li>
+            <li>Check-out: 11:00 AM</li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>© <span id="year"></span> Rapopo Plantation Resort</span>
+        <span>Designed for comfort</span>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
