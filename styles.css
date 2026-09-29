@@ -54,14 +54,14 @@ button {
   right: 20px;
   display: grid;
   gap: 10px;
-  transform: translateY(-50%);
+  transform: translateY(calc(-50% + 54px));
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
 }
 
 .social-rail.is-hidden {
   opacity: 0;
   visibility: hidden;
-  transform: translate(12px, -50%);
+  transform: translate(12px, calc(-50% + 54px));
   pointer-events: none;
 }
 
@@ -71,33 +71,34 @@ button {
   display: grid;
   place-items: center;
   border-radius: 12px;
-  color: white;
-  background: #777a78;
-  box-shadow: 0 8px 20px rgba(31, 27, 26, 0.2);
+  background: transparent;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.social-link.facebook {
+  color: #1877f2;
+}
+
+.social-link.instagram {
+  color: #e4405f;
+}
+
+.social-link.tiktok {
+  color: #111;
+}
+
+.social-link.whatsapp {
+  color: #25d366;
 }
 
 .social-link:hover,
 .social-link:focus-visible {
   transform: translateX(-4px);
-  box-shadow: 0 10px 24px rgba(31, 27, 26, 0.3);
 }
 
-.social-link svg {
-  width: 21px;
-  height: 21px;
-  fill: currentColor;
-  stroke: currentColor;
-  stroke-width: 1.8;
-}
-
-.social-link.instagram svg {
-  fill: none;
-}
-
-.social-link.instagram .social-dot {
-  fill: currentColor;
-  stroke: none;
+.social-link i {
+  font-size: 20px;
+  line-height: 1;
 }
 
 .hero {
@@ -148,16 +149,12 @@ button {
 }
 
 .brand-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: 34px;
   height: 34px;
+  flex: 0 0 34px;
+  object-fit: cover;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(6px);
-  font-size: 1rem;
 }
 
 .nav-links {
@@ -499,7 +496,7 @@ h2 {
   align-items: center;
   gap: 0;
   padding: 22px 18px;
-  text-align: center;
+  text-align: left;
 }
 
 .service-icon {
@@ -512,6 +509,10 @@ h2 {
   background: rgba(185, 112, 82, 0.12);
   font-size: 1.05rem;
   margin-bottom: 12px;
+}
+
+.service-icon i {
+  color: var(--primary);
 }
 
 .service-card h3 {
@@ -527,9 +528,21 @@ h2 {
 }
 
 .site-footer {
+  position: relative;
+  isolation: isolate;
   background: #201d1b;
   color: rgba(255, 255, 255, 0.8);
   padding-top: 54px;
+}
+
+.site-footer::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  background: url("./pictures/backgroud-image.svg") center / cover no-repeat;
+  opacity: 0.1;
+  pointer-events: none;
 }
 
 .footer-inner {
@@ -626,9 +639,8 @@ h2 {
     border-radius: 10px;
   }
 
-  .social-link svg {
-    width: 17px;
-    height: 17px;
+  .social-link i {
+    font-size: 17px;
   }
 
   .booking-row {

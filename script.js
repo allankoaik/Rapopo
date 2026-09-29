@@ -35,62 +35,62 @@ const rooms = [
 
 const services = [
   {
-    icon: "✈️",
+    icon: "fa-solid fa-plane",
     title: "Airport Transfer",
     text: "Complimentary airport transfers make the short journey from Tokua Airport easy and comfortable.",
   },
   {
-    icon: "📶",
+    icon: "fa-solid fa-wifi",
     title: "Free Wi-Fi",
     text: "Stay connected with free Wi-Fi in every room, each designed with a balcony and sea views.",
   },
   {
-    icon: "🛎️",
+    icon: "fa-solid fa-bell-concierge",
     title: "Concierge Service",
     text: "Our team can help arrange island outings, town trips, airport transfers, and time on the water.",
   },
   {
-    icon: "🥐",
+    icon: "fa-solid fa-utensils",
     title: "Breakfast Buffet",
     text: "Start the day with complimentary breakfast, including fresh local flavours and tropical produce.",
   },
   {
-    icon: "🧼",
+    icon: "fa-solid fa-broom",
     title: "Daily Housekeeping",
     text: "Settle into a comfortable, air-conditioned room with thoughtful essentials and a private balcony.",
   },
   {
-    icon: "🚗",
+    icon: "fa-solid fa-square-parking",
     title: "Parking Access",
     text: "Convenient parking is available on site for guests exploring Kokopo and East New Britain by car.",
   },
   {
-    icon: "🍳",
+    icon: "fa-solid fa-mug-hot",
     title: "Free Breakfast",
     text: "Enjoy a complimentary breakfast with fresh fruit, pastries, and local favourites each morning.",
   },
   {
-    icon: "🛶",
+    icon: "fa-solid fa-water",
     title: "Canoeing",
     text: "Explore the calm coastline at your own pace with complimentary canoes available for guests.",
   },
   {
-    icon: "🚕",
+    icon: "fa-solid fa-taxi",
     title: "Taxi Services",
     text: "Our team can arrange reliable taxis for airport transfers, local trips, and evening plans.",
   },
   {
-    icon: "🏊",
+    icon: "fa-solid fa-person-swimming",
     title: "Swimming Pool",
     text: "Cool off and unwind in our inviting pool, surrounded by a peaceful tropical setting.",
   },
   {
-    icon: "🤿",
+    icon: "fa-solid fa-fish",
     title: "Snorkeling",
     text: "Discover clear coastal waters and vibrant marine life with easy access to snorkeling spots.",
   },
   {
-    icon: "💆",
+    icon: "fa-solid fa-spa",
     title: "Massage",
     text: "Restore your balance with a relaxing massage designed to ease away travel-day tension.",
   },
@@ -185,7 +185,7 @@ if (servicesList) {
     .map(
       (service) => `
         <article class="service-card">
-          <div class="service-icon">${service.icon}</div>
+          <div class="service-icon"><i class="${service.icon}" aria-hidden="true"></i></div>
           <h3>${service.title}</h3>
           <p>${service.text}</p>
         </article>
