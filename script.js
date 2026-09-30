@@ -180,6 +180,72 @@ if (accommodationList) {
   }, 5000);
 }
 
+const highlightTrack = document.getElementById("highlight-track");
+const highlightDots = document.getElementById("highlight-dots");
+
+if (highlightTrack && highlightDots) {
+  const highlightSlides = [...highlightTrack.children];
+  let currentHighlight = 0;
+
+  highlightDots.innerHTML = highlightSlides
+    .map(
+      (_, index) => `
+        <button
+          class="dot ${index === currentHighlight ? "active" : ""}"
+          type="button"
+          aria-label="Go to highlight ${index + 1}"
+          aria-current="${index === currentHighlight ? "true" : "false"}"
+          data-index="${index}"
+        ></button>
+      `
+    )
+    .join("");
+
+  function updateHighlights() {
+    highlightTrack.style.transform = `translateX(-${currentHighlight * 100}%)`;
+    highlightSlides.forEach((slide, index) => {
+      slide.setAttribute("aria-hidden", String(index !== currentHighlight));
+    });
+    highlightDots.querySelectorAll(".dot").forEach((dot, index) => {
+      dot.classList.toggle("active", index === currentHighlight);
+      dot.setAttribute("aria-current", String(index === currentHighlight));
+    });
+  }
+
+  let highlightTimer;
+
+  function restartHighlightTimer() {
+    clearInterval(highlightTimer);
+    highlightTimer = setInterval(() => {
+      currentHighlight = (currentHighlight + 1) % highlightSlides.length;
+      updateHighlights();
+    }, 10000);
+  }
+
+  document.querySelector(".highlight-prev")?.addEventListener("click", () => {
+    currentHighlight = (currentHighlight - 1 + highlightSlides.length) % highlightSlides.length;
+    updateHighlights();
+    restartHighlightTimer();
+  });
+
+  document.querySelector(".highlight-next")?.addEventListener("click", () => {
+    currentHighlight = (currentHighlight + 1) % highlightSlides.length;
+    updateHighlights();
+    restartHighlightTimer();
+  });
+
+  highlightDots.addEventListener("click", (event) => {
+    const target = event.target.closest(".dot");
+    if (!target) return;
+
+    currentHighlight = Number(target.dataset.index);
+    updateHighlights();
+    restartHighlightTimer();
+  });
+
+  restartHighlightTimer();
+}
+
 if (servicesList) {
   servicesList.innerHTML = services
     .map(

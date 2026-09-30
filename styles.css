@@ -492,6 +492,112 @@ h2 {
   background: #f1eadf;
 }
 
+.highlights {
+  background: var(--panel);
+}
+
+.highlight-carousel {
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+}
+
+.highlight-viewport {
+  overflow: hidden;
+}
+
+.highlight-track {
+  display: flex;
+  transition: transform 900ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.highlight-slide {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex: 0 0 100%;
+  min-height: 440px;
+  background: var(--card);
+}
+
+.highlight-image {
+  display: grid;
+  place-items: center;
+  min-height: 440px;
+  color: rgba(31, 27, 26, 0.7);
+  background-color: #d8e4df;
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0,
+    transparent 16px,
+    rgba(255, 255, 255, 0.18) 16px,
+    rgba(255, 255, 255, 0.18) 17px
+  );
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.highlight-image.snorkeling {
+  background-color: #d7e6e9;
+}
+
+.highlight-image.dining {
+  background-color: #e8ded0;
+}
+
+.highlight-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 620px;
+  padding: 64px 72px;
+}
+
+.highlight-copy .eyebrow {
+  margin-bottom: 14px;
+}
+
+.highlight-copy h3 {
+  margin-bottom: 14px;
+  font-size: 3rem;
+}
+
+.highlight-copy p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.highlight-copy .eyebrow {
+  color: var(--primary);
+}
+
+.highlight-control {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: rgba(255, 253, 249, 0.94);
+  color: var(--text);
+  box-shadow: 0 8px 24px rgba(31, 27, 26, 0.18);
+}
+
+.highlight-prev {
+  left: 24px;
+}
+
+.highlight-next {
+  right: 24px;
+}
+
+.highlight-dots {
+  margin-top: 24px;
+}
+
 .service-card {
   display: flex;
   flex-direction: column;
@@ -616,8 +722,21 @@ h2 {
     grid-template-columns: 1fr;
   }
 
+  .highlight-slide {
+    grid-template-columns: 1fr;
+  }
+
   .slide-image {
     min-height: 260px;
+  }
+
+  .highlight-image {
+    min-height: 280px;
+  }
+
+  .highlight-copy {
+    min-height: 220px;
+    padding: 36px 56px;
   }
 }
 
@@ -655,6 +774,23 @@ h2 {
 
   .carousel-btn {
     display: none;
+  }
+
+  .highlight-control {
+    width: 40px;
+    height: 40px;
+  }
+
+  .highlight-prev {
+    left: 12px;
+  }
+
+  .highlight-next {
+    right: 12px;
+  }
+
+  .highlight-copy h3 {
+    font-size: 2.4rem;
   }
 
   .hero-actions {
