@@ -266,37 +266,9 @@ if (year) {
 
 const socialRail = document.querySelector(".social-rail");
 const contactSection = document.getElementById("contact");
-const bookingFields = document.querySelectorAll(".booking-panel input, .booking-panel select");
 const topbar = document.querySelector(".topbar");
 const pageSections = document.querySelectorAll("main section, .site-footer");
-let socialReturnTimer;
 let navigationReturnTimer;
-
-function hideSocialRailWhileEditing() {
-  if (!socialRail) return;
-
-  clearTimeout(socialReturnTimer);
-  socialRail.classList.add("is-hidden");
-}
-
-function showSocialRailAfterEditing() {
-  if (!socialRail) return;
-
-  clearTimeout(socialReturnTimer);
-  socialReturnTimer = setTimeout(() => {
-    socialRail.classList.remove("is-hidden");
-  }, 900);
-}
-
-bookingFields.forEach((field) => {
-  field.addEventListener("focus", hideSocialRailWhileEditing);
-  field.addEventListener("input", () => {
-    hideSocialRailWhileEditing();
-    showSocialRailAfterEditing();
-  });
-  field.addEventListener("change", showSocialRailAfterEditing);
-  field.addEventListener("blur", showSocialRailAfterEditing);
-});
 
 if (socialRail && contactSection) {
   const contactObserver = new IntersectionObserver(
