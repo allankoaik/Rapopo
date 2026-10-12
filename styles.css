@@ -142,10 +142,12 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 12px;
+  color: inherit;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   font-size: 0.82rem;
+  text-decoration: none;
 }
 
 .brand-mark {
@@ -598,6 +600,79 @@ h2 {
   margin-top: 24px;
 }
 
+.testimonials {
+  background: #fff;
+  padding: 56px 0;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-auto-columns: calc((100% - 40px) / 3);
+  grid-auto-flow: column;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: var(--primary) rgba(31, 27, 26, 0.12);
+  scrollbar-width: thin;
+}
+
+.testimonial-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.testimonial-grid::-webkit-scrollbar-track {
+  background: rgba(31, 27, 26, 0.12);
+  border-radius: 8px;
+}
+
+.testimonial-grid::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 8px;
+}
+
+.testimonial {
+  scroll-snap-align: start;
+  padding: 22px 18px;
+}
+
+.testimonial blockquote {
+  margin: 0;
+}
+
+.testimonial blockquote p {
+  margin: 0 0 20px;
+  color: var(--text);
+  font-size: 1.02rem;
+  font-style: italic;
+}
+
+.testimonial blockquote footer {
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.testimonial cite {
+  font-style: normal;
+}
+
+.testimonial cite > span::before {
+  content: " · ";
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.country-flag {
+  display: inline-block;
+  width: 20px;
+  height: 15px;
+  margin-right: 0.35em;
+  object-fit: cover;
+  vertical-align: -2px;
+}
+
 .service-card {
   display: flex;
   flex-direction: column;
@@ -738,6 +813,10 @@ h2 {
     min-height: 220px;
     padding: 36px 56px;
   }
+
+  .testimonial-grid {
+    grid-auto-columns: 42%;
+  }
 }
 
 @media (max-width: 560px) {
@@ -791,6 +870,10 @@ h2 {
 
   .highlight-copy h3 {
     font-size: 2.4rem;
+  }
+
+  .testimonial-grid {
+    grid-auto-columns: 82%;
   }
 
   .hero-actions {
